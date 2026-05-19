@@ -1,0 +1,35 @@
+project:
+  name: resume-cover-letter-multi-agent
+  version: 0.1.0
+
+defaults:
+  output_format: markdown
+  evidence_policy: claims_must_map_to_inventory
+  tone: direct, credible, specific, warm
+  resume_length:
+    default: 2 pages
+    early_career: 1 page
+    executive: 2-3 pages
+  cover_letter_length: 250-450 words
+
+agent_sequence:
+  - id: job_analyst
+    prompt: agents/01-job-analyst.md
+    output: 01-job-target-brief.md
+  - id: application_writer
+    prompt: agents/02-application-writer.md
+    output:
+      - 02-draft-resume.md
+      - 02-draft-cover-letter.md
+      - 02-evidence-map.md
+  - id: hiring_manager_reviewer
+    prompt: agents/03-hiring-manager-reviewer.md
+    output: 03-review.md
+
+quality_gates:
+  - no unsupported claims
+  - no fake metrics
+  - no invented employer names, titles, tools, certifications, or degrees
+  - every priority requirement is addressed or explicitly marked as a gap
+  - reviewer produces actionable revision recommendations
+

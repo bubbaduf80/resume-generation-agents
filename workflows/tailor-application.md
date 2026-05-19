@@ -1,0 +1,114 @@
+# Workflow: Tailor Application To A Specific Job
+
+## Setup
+
+1. Create a job slug:
+
+```text
+company-role-yyyy-mm-dd
+```
+
+2. Create:
+
+```text
+data/jobs/company-role-yyyy-mm-dd/
+output/company-role-yyyy-mm-dd/
+```
+
+3. Copy the template input files from:
+
+```text
+data/jobs/_template/
+```
+
+4. Fill in:
+
+- `job_description.md`
+- `company_research.md`
+- `role_context.md`
+
+5. Update candidate files as needed:
+
+- `data/career_inventory/career_profile.md`
+- `data/career_inventory/evidence_index.yaml`
+- `data/career_inventory/primary_evidence/`
+- `data/career_inventory/supporting_material/`
+
+## Agent 01 Invocation
+
+```text
+Follow agents/01-job-analyst.md.
+
+Inputs:
+- data/jobs/{job_slug}/job_description.md
+- data/jobs/{job_slug}/company_research.md
+- data/jobs/{job_slug}/role_context.md
+
+Write:
+- output/{job_slug}/01-job-target-brief.md
+```
+
+## Agent 02 Invocation
+
+```text
+Follow agents/02-application-writer.md.
+
+Inputs:
+- output/{job_slug}/01-job-target-brief.md
+- data/career_inventory/career_profile.md
+- data/career_inventory/evidence_index.yaml
+- data/career_inventory/primary_evidence/
+- data/career_inventory/supporting_material/
+
+Write:
+- output/{job_slug}/02-draft-resume.md
+- output/{job_slug}/02-draft-cover-letter.md
+- output/{job_slug}/02-evidence-map.md
+```
+
+## Agent 03 Invocation
+
+```text
+Follow agents/03-hiring-manager-reviewer.md.
+
+Inputs:
+- output/{job_slug}/01-job-target-brief.md
+- output/{job_slug}/02-draft-resume.md
+- output/{job_slug}/02-draft-cover-letter.md
+- output/{job_slug}/02-evidence-map.md
+- data/jobs/{job_slug}/company_research.md
+- data/jobs/{job_slug}/role_context.md
+
+Write:
+- output/{job_slug}/03-review.md
+```
+
+## Revision Invocation
+
+```text
+Follow agents/02-application-writer.md, but this time revise rather than draft from scratch.
+
+Inputs:
+- output/{job_slug}/01-job-target-brief.md
+- output/{job_slug}/02-draft-resume.md
+- output/{job_slug}/02-draft-cover-letter.md
+- output/{job_slug}/02-evidence-map.md
+- output/{job_slug}/03-review.md
+- data/career_inventory/
+
+Write:
+- output/{job_slug}/04-final-resume.md
+- output/{job_slug}/04-final-cover-letter.md
+- output/{job_slug}/04-final-evidence-map.md
+```
+
+## Final Human Checklist
+
+- All facts are true.
+- Metrics are accurate.
+- Dates and titles are correct.
+- The resume does not overstate scope.
+- The cover letter sounds like you.
+- Any gaps are accepted consciously.
+- Sensitive or confidential details are removed.
+

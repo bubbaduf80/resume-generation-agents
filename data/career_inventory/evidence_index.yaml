@@ -1,0 +1,37 @@
+candidate:
+  name:
+  current_title:
+
+evidence_documents:
+  - id: resume_master
+    path: data/career_inventory/primary_evidence/
+    type: resume
+    description: Master resume or comprehensive career document.
+  - id: performance_reviews
+    path: data/career_inventory/primary_evidence/
+    type: performance_review
+    description: Reviews that contain validated accomplishments or strengths.
+  - id: project_artifacts
+    path: data/career_inventory/supporting_material/
+    type: project_artifact
+    description: Project writeups, case studies, launches, dashboards, presentations, or public work.
+
+claim_bank:
+  # Add reusable, evidence-backed claims here.
+  # Example:
+  # - claim: Led cross-functional launch of X across Y teams.
+  #   evidence_id: project_artifacts
+  #   source_path: data/career_inventory/supporting_material/example.md
+  #   confidence: high
+  #   notes: Metric verified in QBR deck.
+
+metrics:
+  # Add verified numbers here.
+  # - metric: Reduced processing time by 32%.
+  #   source_path:
+  #   date:
+  #   context:
+
+do_not_use:
+  # Add claims, wording, employers, projects, or sensitive topics to avoid.
+

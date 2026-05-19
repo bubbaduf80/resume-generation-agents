@@ -1,0 +1,15 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+
+# Local/editor state
+.idea/
+.vscode/
+
+# Generated application outputs can contain sensitive personal data.
+# Remove these lines if you intentionally want to version final job materials.
+output/*/
+!output/_template/
+!output/_template/**
+
