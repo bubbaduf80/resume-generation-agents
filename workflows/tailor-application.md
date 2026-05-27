@@ -53,6 +53,11 @@ Write:
 ```text
 Follow agents/02-application-writer.md.
 
+Resume length guidance:
+- Target 2 pages by default.
+- Compress less-relevant or older experience before expanding beyond 2 pages.
+- Use more than 2 pages only if this specific job clearly requires it, and explain why in the evidence map.
+
 Inputs:
 - output/{job_slug}/01-job-target-brief.md
 - data/career_inventory/career_profile.md
@@ -62,7 +67,9 @@ Inputs:
 
 Write:
 - output/{job_slug}/02-draft-resume.md
+- output/{job_slug}/02-draft-resume.pdf
 - output/{job_slug}/02-draft-cover-letter.md
+- output/{job_slug}/02-draft-cover-letter.pdf
 - output/{job_slug}/02-evidence-map.md
 ```
 
@@ -98,7 +105,9 @@ Inputs:
 
 Write:
 - output/{job_slug}/04-final-resume.md
+- output/{job_slug}/04-final-resume.pdf
 - output/{job_slug}/04-final-cover-letter.md
+- output/{job_slug}/04-final-cover-letter.pdf
 - output/{job_slug}/04-final-evidence-map.md
 ```
 
@@ -111,4 +120,3 @@ Write:
 - The cover letter sounds like you.
 - Any gaps are accepted consciously.
 - Sensitive or confidential details are removed.
-

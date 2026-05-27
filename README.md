@@ -74,12 +74,12 @@ Then run the agents in order:
    - Output: `output/company-role-yyyy-mm-dd/01-job-target-brief.md`
 2. Use `agents/02-application-writer.md`.
    - Inputs: job target brief, career inventory, evidence index.
-   - Output: `output/company-role-yyyy-mm-dd/02-draft-resume.md` and `02-draft-cover-letter.md`
+   - Output: `output/company-role-yyyy-mm-dd/02-draft-resume.md`, `02-draft-resume.pdf`, `02-draft-cover-letter.md`, and `02-draft-cover-letter.pdf`
 3. Use `agents/03-hiring-manager-reviewer.md`.
    - Inputs: job target brief, draft resume, draft cover letter, company research.
    - Output: `output/company-role-yyyy-mm-dd/03-review.md`
 4. Send the review back to the writer for revision.
-   - Output: `output/company-role-yyyy-mm-dd/04-final-resume.md` and `04-final-cover-letter.md`
+   - Output: `output/company-role-yyyy-mm-dd/04-final-resume.md`, `04-final-resume.pdf`, `04-final-cover-letter.md`, and `04-final-cover-letter.pdf`
 
 ## Invocation Pattern
 
@@ -99,12 +99,29 @@ Write the output to:
 
 Repeat the same pattern with the second and third agent specs.
 
+## Resume PDF Rendering
+
+Agent 02 keeps Markdown as the editable source of truth and renders a polished PDF for human review:
+
+```bash
+scripts/render_resume_pdf.js output/company-role-yyyy-mm-dd/02-draft-resume.md output/company-role-yyyy-mm-dd/02-draft-resume.pdf
+```
+
+The renderer also writes a companion `.html` file for quick visual inspection.
+
+Cover letters use the same renderer with a different stylesheet:
+
+```bash
+scripts/render_resume_pdf.js output/company-role-yyyy-mm-dd/02-draft-cover-letter.md output/company-role-yyyy-mm-dd/02-draft-cover-letter.pdf styles/cover-letter.css
+```
+
 ## Operating Principles
 
 - Prefer concrete evidence over generalized self-description.
 - Preserve factual accuracy over perceived fit.
+- Default to a 2-page resume. Expand only when a specific job clearly requires broader evidence.
+- Simplify older or less-relevant experience before sacrificing readability or focus.
 - Use the job description as the primary source of role requirements.
 - Use company research to tune emphasis and tone, not to fabricate insider knowledge.
 - Mark missing evidence clearly.
 - Keep each intermediate artifact; it is part of the reasoning trail.
-

@@ -11,7 +11,8 @@ Use this file for your own interpretation and preferences.
 
 ## Application Constraints
 
-- Resume length target:
+- Resume length target: 2 pages unless this specific role clearly requires more
+- Resume expansion rationale:
 - Cover letter required? Yes/No
 - Deadline:
 - Referral or contact:
@@ -22,4 +23,3 @@ Use this file for your own interpretation and preferences.
 - Anything the agents should know:
 - Claims or topics to avoid:
 - Experience you especially want considered:
-

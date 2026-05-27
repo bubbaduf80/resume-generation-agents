@@ -9,7 +9,8 @@ defaults:
   resume_length:
     default: 2 pages
     early_career: 1 page
-    executive: 2-3 pages
+    executive: 2 pages unless the specific job requires broader evidence
+    expansion_policy: exceed 2 pages only when role-specific evidence is clearly worth the added length
   cover_letter_length: 250-450 words
 
 agent_sequence:
@@ -20,7 +21,9 @@ agent_sequence:
     prompt: agents/02-application-writer.md
     output:
       - 02-draft-resume.md
+      - 02-draft-resume.pdf
       - 02-draft-cover-letter.md
+      - 02-draft-cover-letter.pdf
       - 02-evidence-map.md
   - id: hiring_manager_reviewer
     prompt: agents/03-hiring-manager-reviewer.md
@@ -32,4 +35,3 @@ quality_gates:
   - no invented employer names, titles, tools, certifications, or degrees
   - every priority requirement is addressed or explicitly marked as a gap
   - reviewer produces actionable revision recommendations
-
