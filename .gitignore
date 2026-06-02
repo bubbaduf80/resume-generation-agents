@@ -13,3 +13,20 @@ output/*/
 !output/_template/
 !output/_template/**
 
+# Candidate-specific career inventory can contain personal details,
+# employment history, private metrics, and sensitive evidence pointers.
+data/career_inventory/career_profile.md
+data/career_inventory/evidence_index.yaml
+data/career_inventory/primary_evidence/**
+data/career_inventory/supporting_material/**
+!data/career_inventory/README.md
+!data/career_inventory/career_profile.template.md
+!data/career_inventory/evidence_index.template.yaml
+!data/career_inventory/primary_evidence/.gitkeep
+!data/career_inventory/supporting_material/.gitkeep
+
+# Job-specific inputs can contain personal preferences, referrals,
+# application strategy, and captured postings. Keep only base templates.
+data/jobs/*/
+!data/jobs/_template/
+!data/jobs/_template/**

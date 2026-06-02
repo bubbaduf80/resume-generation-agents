@@ -90,10 +90,10 @@ Write:
 - output/{job_slug}/03-review.md
 ```
 
-## Revision Invocation
+## Agent 04 Finalization Invocation
 
 ```text
-Follow agents/02-application-writer.md, but this time revise rather than draft from scratch.
+Follow agents/04-finalization-editor.md.
 
 Inputs:
 - output/{job_slug}/01-job-target-brief.md
@@ -102,6 +102,7 @@ Inputs:
 - output/{job_slug}/02-evidence-map.md
 - output/{job_slug}/03-review.md
 - data/career_inventory/
+- Candidate edit instructions or confirmation that the current draft Markdown files are approved.
 
 Write:
 - output/{job_slug}/04-final-resume.md
@@ -109,7 +110,10 @@ Write:
 - output/{job_slug}/04-final-cover-letter.md
 - output/{job_slug}/04-final-cover-letter.pdf
 - output/{job_slug}/04-final-evidence-map.md
+- output/{job_slug}/04-finalization-notes.md
 ```
+
+Agent 04 should regenerate the draft PDFs first, verify page counts, promote approved draft Markdown to final Markdown, render final PDFs, and record finalization decisions.
 
 ## Final Human Checklist
 
@@ -120,3 +124,6 @@ Write:
 - The cover letter sounds like you.
 - Any gaps are accepted consciously.
 - Sensitive or confidential details are removed.
+- Final resume PDF page count is acceptable.
+- Final cover letter PDF page count is acceptable.
+- Final Markdown files are the source of truth for submitted PDFs.

@@ -1,10 +1,11 @@
 # Resume and Cover Letter Multi-Agent Framework
 
-This project helps tailor resumes and cover letters to specific jobs through three explicit agent passes:
+This project helps tailor resumes and cover letters to specific jobs through four explicit agent passes:
 
 1. **Job Analyst** extracts must-have and nice-to-have resume/cover-letter targets from the job description and company context.
 2. **Application Writer** uses the job targets and your career inventory to draft tailored application materials.
 3. **Hiring Manager Reviewer** reviews the draft adversarially for fit, gaps, risks, and recommended changes.
+4. **Finalization Editor** works with your approved edits, regenerates PDFs, verifies page counts, and promotes drafts to final artifacts.
 
 The goal is not to invent fit. The goal is to make real fit legible, identify missing evidence, and avoid over-claiming.
 
@@ -30,13 +31,17 @@ agents/
   01-job-analyst.md
   02-application-writer.md
   03-hiring-manager-reviewer.md
+  04-finalization-editor.md
 
 config/
   project.yaml
 
 data/
   career_inventory/
+    README.md
+    career_profile.template.md
     career_profile.md
+    evidence_index.template.yaml
     evidence_index.yaml
     primary_evidence/
     supporting_material/
@@ -54,6 +59,15 @@ output/
 ```
 
 ## Standard Job Workflow
+
+If this is a fresh checkout, create your local private career inventory from the committed templates:
+
+```bash
+cp data/career_inventory/career_profile.template.md data/career_inventory/career_profile.md
+cp data/career_inventory/evidence_index.template.yaml data/career_inventory/evidence_index.yaml
+```
+
+The working career files and supporting evidence are ignored by Git because they can contain personal or confidential information.
 
 Create a job folder:
 
@@ -78,8 +92,9 @@ Then run the agents in order:
 3. Use `agents/03-hiring-manager-reviewer.md`.
    - Inputs: job target brief, draft resume, draft cover letter, company research.
    - Output: `output/company-role-yyyy-mm-dd/03-review.md`
-4. Send the review back to the writer for revision.
-   - Output: `output/company-role-yyyy-mm-dd/04-final-resume.md`, `04-final-resume.pdf`, `04-final-cover-letter.md`, and `04-final-cover-letter.pdf`
+4. Use `agents/04-finalization-editor.md`.
+   - Inputs: draft resume, draft cover letter, evidence map, review, and your approved edits or instructions.
+   - Output: `output/company-role-yyyy-mm-dd/04-final-resume.md`, `04-final-resume.pdf`, `04-final-cover-letter.md`, `04-final-cover-letter.pdf`, `04-final-evidence-map.md`, and `04-finalization-notes.md`
 
 ## Invocation Pattern
 
@@ -97,7 +112,7 @@ Write the output to:
 - output/acme-senior-product-manager-2026-05-19/01-job-target-brief.md
 ```
 
-Repeat the same pattern with the second and third agent specs.
+Repeat the same pattern with the second, third, and fourth agent specs.
 
 ## Resume PDF Rendering
 
@@ -125,3 +140,4 @@ scripts/render_resume_pdf.js output/company-role-yyyy-mm-dd/02-draft-cover-lette
 - Use company research to tune emphasis and tone, not to fabricate insider knowledge.
 - Mark missing evidence clearly.
 - Keep each intermediate artifact; it is part of the reasoning trail.
+- Treat final Markdown files as the source of truth for final PDFs.

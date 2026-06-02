@@ -1,6 +1,6 @@
 # Career Profile
 
-This is the stable source of truth about the candidate.
+This is the stable source of truth about the candidate. Copy this file to `career_profile.md` and fill in private details locally.
 
 ## Contact
 
@@ -20,15 +20,25 @@ This is the stable source of truth about the candidate.
 
 ## Professional Summary Raw Material
 
-Write several factual statements about your career, strengths, scope, and working style.
+Write factual statements about your career, strengths, scope, operating style, and target positioning.
+
+Examples:
+
+- I have X years of experience in...
+- I have led teams of...
+- I have built or launched...
+- I am strongest when...
 
 ## Work History
 
-For each role, include:
+For each role, copy and complete this block.
+
+### Employer Name
 
 - Employer:
 - Title:
 - Dates:
+- Location:
 - Team/function:
 - Scope:
 - Major responsibilities:
@@ -37,18 +47,24 @@ For each role, include:
 - Tools/technologies:
 - Stakeholders:
 - Promotions or scope changes:
+- Evidence IDs:
 
 ## Projects And Case Studies
 
-For each project, include:
+For each project, copy and complete this block.
 
-- Project name:
+### Project Name
+
 - Context:
 - Your role:
+- Problem:
 - Actions:
 - Results:
 - Metrics:
+- Tools/technologies:
+- Stakeholders:
 - Artifacts available:
+- Evidence IDs:
 
 ## Skills
 
@@ -60,10 +76,18 @@ For each project, include:
 
 ## Education And Certifications
 
+For each degree or certification, copy and complete this block.
+
 - Degree/certification:
 - Institution:
 - Date:
 - Notes:
+
+## Interests And Projects Outside Work
+
+Include only items you are comfortable using in application materials.
+
+- 
 
 ## Constraints
 
@@ -71,4 +95,5 @@ For each project, include:
 - Claims requiring extra caution:
 - Outdated experience:
 - Preferred wording:
-
+- Location/work-model constraints:
+- Confidentiality constraints:

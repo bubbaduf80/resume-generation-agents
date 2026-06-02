@@ -28,6 +28,15 @@ agent_sequence:
   - id: hiring_manager_reviewer
     prompt: agents/03-hiring-manager-reviewer.md
     output: 03-review.md
+  - id: finalization_editor
+    prompt: agents/04-finalization-editor.md
+    output:
+      - 04-final-resume.md
+      - 04-final-resume.pdf
+      - 04-final-cover-letter.md
+      - 04-final-cover-letter.pdf
+      - 04-final-evidence-map.md
+      - 04-finalization-notes.md
 
 quality_gates:
   - no unsupported claims
@@ -35,3 +44,6 @@ quality_gates:
   - no invented employer names, titles, tools, certifications, or degrees
   - every priority requirement is addressed or explicitly marked as a gap
   - reviewer produces actionable revision recommendations
+  - final markdown sources match approved candidate edits
+  - final PDFs are regenerated from final markdown sources
+  - resume page count is verified before finalization

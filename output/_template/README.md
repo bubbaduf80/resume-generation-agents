@@ -14,6 +14,7 @@ Each job-specific output folder should contain:
 - `04-final-cover-letter.md`
 - `04-final-cover-letter.pdf`
 - `04-final-evidence-map.md`
+- `04-finalization-notes.md`
 - `decision-log.md`
 
 Use `decision-log.md` to capture human choices, such as why a reviewer recommendation was accepted or rejected.

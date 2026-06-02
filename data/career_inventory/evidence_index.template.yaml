@@ -1,0 +1,53 @@
+candidate:
+  name:
+  current_title:
+
+evidence_documents:
+  # Primary evidence documents are private by default.
+  # Store local files under data/career_inventory/primary_evidence/
+  # and reference them here. Do not commit sensitive files unless redacted or encrypted.
+  - id: resume_master
+    path: data/career_inventory/primary_evidence/
+    type: resume
+    description: Master resume or comprehensive career document.
+
+  - id: notable_accomplishments
+    path: data/career_inventory/primary_evidence/
+    type: career_accomplishments
+    description: Expanded narrative evidence for major roles, launches, leadership work, and outcomes.
+
+  - id: performance_reviews
+    path: data/career_inventory/primary_evidence/
+    type: performance_review
+    description: Reviews that contain validated accomplishments, scope, strengths, or feedback.
+
+  - id: project_artifacts
+    path: data/career_inventory/supporting_material/
+    type: project_artifact
+    description: Project writeups, case studies, launch docs, dashboards, presentations, or public work.
+
+claim_bank:
+  # Reusable, evidence-backed claims.
+  # Keep claims factual, specific, and traceable.
+  #
+  # - claim: Led cross-functional launch of X across Y teams.
+  #   evidence_id: project_artifacts
+  #   source_path: data/career_inventory/supporting_material/example.md
+  #   confidence: high
+  #   notes: Metric verified in QBR deck.
+
+metrics:
+  # Verified metrics that can be reused in resumes and cover letters.
+  #
+  # - metric: Reduced processing time by 32%.
+  #   source_path: data/career_inventory/supporting_material/example.md
+  #   date:
+  #   context:
+  #   confidence: high
+
+do_not_use:
+  # Claims, wording, employers, projects, or sensitive topics to avoid.
+  #
+  # - topic:
+  #   reason:
+  #   replacement_wording:
