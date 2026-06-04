@@ -67,9 +67,7 @@ Inputs:
 
 Write:
 - output/{job_slug}/02-draft-resume.md
-- output/{job_slug}/02-draft-resume.pdf
 - output/{job_slug}/02-draft-cover-letter.md
-- output/{job_slug}/02-draft-cover-letter.pdf
 - output/{job_slug}/02-evidence-map.md
 ```
 
@@ -113,7 +111,7 @@ Write:
 - output/{job_slug}/04-finalization-notes.md
 ```
 
-Agent 04 should regenerate the draft PDFs first, verify page counts, promote approved draft Markdown to final Markdown, render final PDFs, and record finalization decisions.
+Agent 04 should render PDFs for the first time, verify page counts, promote approved draft Markdown to final Markdown, render final PDFs, and record finalization decisions.
 
 ## Final Human Checklist
 

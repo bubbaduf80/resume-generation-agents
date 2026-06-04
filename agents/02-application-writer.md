@@ -31,9 +31,19 @@ Draft a tailored resume and cover letter that directly address the Job Analyst's
 - Tailor bullets toward outcomes, scope, tools, stakeholders, and business impact.
 - Keep the cover letter complementary, not duplicative. It should explain motivation, fit, and 2-3 proof points.
 
+## Language Review
+
+Before finalizing the draft Markdown files:
+
+- Check spelling, grammar, punctuation, capitalization, and basic phrasing in both the resume and cover letter.
+- Resume bullets may use concise, abbreviated resume style and do not need to be complete sentences.
+- Ensure abbreviated phrasing is still clear, professional, and not awkward.
+- Avoid unexplained jargon unless it is common for the target role or supported by surrounding context.
+- Preserve truthful evidence and do not improve wording by making claims stronger than the source supports.
+
 ## Output
 
-Produce three Markdown files, one formatted PDF resume, and one formatted PDF cover letter.
+Produce three Markdown files. Do not generate PDF files; PDF rendering is owned by Agent 04 during finalization.
 
 ### `02-draft-resume.md`
 
@@ -53,19 +63,8 @@ Length and prioritization:
 - Use 1 page only if the role is narrow or the evidence is naturally concise.
 - Use more than 2 pages only when a specific job justifies it and note the reason in the evidence map.
 - For less-relevant or older roles, keep only employer, title, dates, and 1-3 transferable bullets.
-- Do not make the PDF cramped to force fit. Prefer sharper editing over tiny type, narrow margins, or dense walls of text.
-
-Also render this Markdown resume to:
-
-- `02-draft-resume.pdf`
-
-Use the project renderer unless the user asks for a different format:
-
-```bash
-scripts/render_resume_pdf.js output/{job_slug}/02-draft-resume.md output/{job_slug}/02-draft-resume.pdf
-```
-
-The PDF should be readable, polished, ATS-conscious, and suitable for human review. Keep the Markdown as the editable source of truth.
+- Do not rely on later PDF formatting to force fit. Prefer sharper editing over dense walls of text.
+- Leave PDF rendering and page-count verification to Agent 04.
 
 ### `02-draft-cover-letter.md`
 
@@ -78,17 +77,7 @@ Include:
 - Evidence-backed proof points.
 - Confident close.
 
-Also render this Markdown cover letter to:
-
-- `02-draft-cover-letter.pdf`
-
-Use the project renderer with the cover-letter stylesheet:
-
-```bash
-scripts/render_resume_pdf.js output/{job_slug}/02-draft-cover-letter.md output/{job_slug}/02-draft-cover-letter.pdf styles/cover-letter.css
-```
-
-The PDF should look like a polished business letter and normally fit on 1 page.
+- Leave PDF rendering and page-count verification to Agent 04.
 
 ### `02-evidence-map.md`
 
@@ -108,7 +97,6 @@ Strength values:
 
 - The resume should read like a credible human career document, not a pasted job description.
 - The resume should be tightly prioritized for the target job and normally fit within 2 pages.
-- The PDF should preserve the resume hierarchy, avoid cramped text, use simple ATS-safe structure, and render cleanly on Letter-size pages.
 - The cover letter should add judgment and motivation.
-- The cover letter PDF should be clean, readable, and normally fit within 1 page.
+- The cover letter should normally be concise enough to render within 1 page during Agent 04 finalization.
 - If the evidence does not support a requirement, say so plainly in the evidence map.

@@ -88,7 +88,7 @@ Then run the agents in order:
    - Output: `output/company-role-yyyy-mm-dd/01-job-target-brief.md`
 2. Use `agents/02-application-writer.md`.
    - Inputs: job target brief, career inventory, evidence index.
-   - Output: `output/company-role-yyyy-mm-dd/02-draft-resume.md`, `02-draft-resume.pdf`, `02-draft-cover-letter.md`, and `02-draft-cover-letter.pdf`
+   - Output: `output/company-role-yyyy-mm-dd/02-draft-resume.md`, `02-draft-cover-letter.md`, and `02-evidence-map.md`
 3. Use `agents/03-hiring-manager-reviewer.md`.
    - Inputs: job target brief, draft resume, draft cover letter, company research.
    - Output: `output/company-role-yyyy-mm-dd/03-review.md`
@@ -116,13 +116,13 @@ Repeat the same pattern with the second, third, and fourth agent specs.
 
 ## Resume PDF Rendering
 
-Agent 02 keeps Markdown as the editable source of truth and renders a polished PDF for human review:
+Agent 02 keeps Markdown as the editable source of truth. Agent 04 renders PDFs during finalization:
 
 ```bash
 scripts/render_resume_pdf.js output/company-role-yyyy-mm-dd/02-draft-resume.md output/company-role-yyyy-mm-dd/02-draft-resume.pdf
 ```
 
-The renderer also writes a companion `.html` file for quick visual inspection.
+Agent 04 may render draft PDFs for page-count checks, then renders the final submission PDFs from `04-final-*.md`. The renderer also writes a companion `.html` file for quick visual inspection.
 
 Cover letters use the same renderer with a different stylesheet:
 

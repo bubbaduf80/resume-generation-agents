@@ -4,9 +4,7 @@ Each job-specific output folder should contain:
 
 - `01-job-target-brief.md`
 - `02-draft-resume.md`
-- `02-draft-resume.pdf`
 - `02-draft-cover-letter.md`
-- `02-draft-cover-letter.pdf`
 - `02-evidence-map.md`
 - `03-review.md`
 - `04-final-resume.md`
