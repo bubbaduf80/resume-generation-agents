@@ -2,6 +2,7 @@
 .env
 .env.*
 !.env.example
+node_modules/
 
 # Local/editor state
 .idea/
@@ -17,6 +18,8 @@ output/*/
 # employment history, private metrics, and sensitive evidence pointers.
 data/career_inventory/career_profile.md
 data/career_inventory/evidence_index.yaml
+data/career_inventory/linkedin_about.md
+data/career_inventory/linkedin_experience_summaries.md
 data/career_inventory/primary_evidence/**
 data/career_inventory/supporting_material/**
 !data/career_inventory/README.md

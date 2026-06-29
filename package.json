@@ -1,0 +1,14 @@
+{
+  "name": "resume-generation-agents",
+  "private": true,
+  "version": "0.1.0",
+  "type": "commonjs",
+  "scripts": {
+    "check:currency": "node scripts/check_markdown_currency.js",
+    "render:resume": "node scripts/render_resume_pdf.js"
+  },
+  "dependencies": {
+    "marked": "^12.0.2",
+    "playwright": "^1.44.0"
+  }
+}

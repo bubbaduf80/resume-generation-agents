@@ -39,9 +39,11 @@ agent_sequence:
 quality_gates:
   - no unsupported claims
   - no fake metrics
+  - Only repeat claims from early sections of resume when adding important context in later sections
   - no invented employer names, titles, tools, certifications, or degrees
   - every priority requirement is addressed or explicitly marked as a gap
   - reviewer produces actionable revision recommendations
   - final markdown sources match approved candidate edits
   - final PDFs are regenerated from final markdown sources
   - resume page count is verified before finalization
+  - no spelling errors or grammatical typos. when in doubt, ask.

@@ -43,6 +43,9 @@ This agent is the human-in-the-loop closer. It does not re-strategize the applic
 - If the resume PDF exceeds 2 pages, tighten lower-priority or less-relevant content before reducing readability.
 - Expand beyond 2 pages only if the candidate explicitly approves or the job has a documented expansion rationale.
 - Keep the cover letter normally to 1 page.
+- Preserve currency entities such as `&#36;50M` in Markdown source files. Do not convert them to raw or backslash-escaped dollar signs; some Markdown viewers interpret either form as math delimiters.
+- Before promotion, check all draft and final Markdown files for raw or backslash-escaped currency dollar signs and replace them with `&#36;`.
+- Run `node scripts/check_markdown_currency.js` against the approved draft and final Markdown files before completing finalization.
 - Regenerate PDFs from the Markdown sources after edits.
 - Promote the accepted draft sources to final files only after rendering and page checks pass.
 
@@ -140,4 +143,5 @@ Include:
 - Resume is 2 pages unless explicitly approved otherwise.
 - Cover letter is normally 1 page.
 - Final claims are evidence-backed and do not overstate fit.
+- Currency amounts display correctly in both Markdown and rendered PDFs, with dollar signs represented as `&#36;` in the Markdown source.
 - The candidate can understand exactly what changed and why.

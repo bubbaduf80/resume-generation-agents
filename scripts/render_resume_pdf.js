@@ -3,10 +3,8 @@
 const fs = require("fs");
 const path = require("path");
 
-const runtimeNodeModules =
-  "/Users/ddufresne/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules";
-const { marked } = require(path.join(runtimeNodeModules, "marked"));
-const { chromium } = require(path.join(runtimeNodeModules, "playwright"));
+const { marked } = require("marked");
+const { chromium } = require("playwright");
 
 function usage() {
   console.error(
@@ -61,12 +59,18 @@ fs.writeFileSync(htmlPath, html);
 
 function chromeExecutablePath() {
   const candidates = [
+    process.env.CHROME_PATH,
+    process.env.EDGE_PATH,
     "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
     "/Applications/Chromium.app/Contents/MacOS/Chromium",
     "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+    "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+    "C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe",
+    "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
   ];
 
-  return candidates.find((candidate) => fs.existsSync(candidate));
+  return candidates.find((candidate) => candidate && fs.existsSync(candidate));
 }
 
 (async () => {
@@ -90,4 +94,3 @@ function chromeExecutablePath() {
   console.error(error.message);
   process.exit(1);
 });
-

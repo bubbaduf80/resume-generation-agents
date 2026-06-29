@@ -36,6 +36,9 @@ Draft a tailored resume and cover letter that directly address the Job Analyst's
 Before finalizing the draft Markdown files:
 
 - Check spelling, grammar, punctuation, capitalization, and basic phrasing in both the resume and cover letter.
+- Write every currency dollar sign in Markdown as the HTML entity `&#36;`, for example `&#36;50M`, `&#36;190,000`, or `&#36;26M+`. Raw and backslash-escaped dollar signs may still be interpreted as math delimiters by Markdown viewers.
+- Apply the currency-entity rule to all three Agent 02 outputs, including tables and evidence-map notes.
+- Before completing Agent 02, run `node scripts/check_markdown_currency.js` against all three output Markdown files and correct every reported line.
 - Resume bullets may use concise, abbreviated resume style and do not need to be complete sentences.
 - Ensure abbreviated phrasing is still clear, professional, and not awkward.
 - Avoid unexplained jargon unless it is common for the target role or supported by surrounding context.
