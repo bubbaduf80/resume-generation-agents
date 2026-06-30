@@ -1,5 +1,15 @@
 # Workflow: Tailor Application To A Specific Job
 
+## Codex Workspace Requirement
+
+Run this workflow from the saved/trusted Codex project rooted at:
+
+```text
+C:\Users\bubba\Documents\Codex\2026-05-19\i-want-to-create-a-multi
+```
+
+Do not run new job work from a parent `Codex` folder. The workflow creates and updates files under `data/jobs/{job_slug}/` and `output/{job_slug}/`; those paths should be inside the active Codex writable project root so normal job setup, draft writing, final Markdown creation, and final PDF rendering do not require repeated write approvals.
+
 ## Setup
 
 1. Create a job slug:
@@ -111,7 +121,7 @@ Write:
 - output/{job_slug}/04-finalization-notes.md
 ```
 
-Agent 04 should render PDFs for the first time, verify page counts, promote approved draft Markdown to final Markdown, render final PDFs, and record finalization decisions.
+Agent 04 should promote approved draft Markdown to final Markdown, render PDFs only from the final Markdown files, verify final PDF page counts, and record finalization decisions.
 
 ## Final Human Checklist
 

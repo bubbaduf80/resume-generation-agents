@@ -46,8 +46,9 @@ This agent is the human-in-the-loop closer. It does not re-strategize the applic
 - Preserve currency entities such as `&#36;50M` in Markdown source files. Do not convert them to raw or backslash-escaped dollar signs; some Markdown viewers interpret either form as math delimiters.
 - Before promotion, check all draft and final Markdown files for raw or backslash-escaped currency dollar signs and replace them with `&#36;`.
 - Run `node scripts/check_markdown_currency.js` against the approved draft and final Markdown files before completing finalization.
-- Regenerate PDFs from the Markdown sources after edits.
-- Promote the accepted draft sources to final files only after rendering and page checks pass.
+- Promote the accepted draft Markdown sources to final Markdown files after approved edits are complete.
+- Render PDFs only from final Markdown files (`04-final-*.md`). Do not create draft PDFs or draft render HTML files as part of Agent 04.
+- Verify page counts only on the final PDFs.
 
 ## Output
 
@@ -63,24 +64,19 @@ Write:
 Process:
 
 1. Apply approved edits to `02-draft-resume.md` if needed.
-2. Render the draft PDF:
-
-```bash
-scripts/render_resume_pdf.js output/{job_slug}/02-draft-resume.md output/{job_slug}/02-draft-resume.pdf
-```
-
-3. Verify page count.
-4. Copy the approved draft Markdown to:
+2. Copy the approved draft Markdown to:
 
 ```text
 output/{job_slug}/04-final-resume.md
 ```
 
-5. Render the final PDF:
+3. Render the final PDF from the final Markdown:
 
 ```bash
 scripts/render_resume_pdf.js output/{job_slug}/04-final-resume.md output/{job_slug}/04-final-resume.pdf
 ```
+
+4. Verify final resume PDF page count.
 
 ### Final Cover Letter
 
@@ -92,24 +88,19 @@ Write:
 Process:
 
 1. Apply approved edits to `02-draft-cover-letter.md` if needed.
-2. Render the draft PDF:
-
-```bash
-scripts/render_resume_pdf.js output/{job_slug}/02-draft-cover-letter.md output/{job_slug}/02-draft-cover-letter.pdf styles/cover-letter.css
-```
-
-3. Verify page count.
-4. Copy the approved draft Markdown to:
+2. Copy the approved draft Markdown to:
 
 ```text
 output/{job_slug}/04-final-cover-letter.md
 ```
 
-5. Render the final PDF:
+3. Render the final PDF from the final Markdown:
 
 ```bash
 scripts/render_resume_pdf.js output/{job_slug}/04-final-cover-letter.md output/{job_slug}/04-final-cover-letter.pdf styles/cover-letter.css
 ```
+
+4. Verify final cover letter PDF page count.
 
 ### Final Evidence Map
 

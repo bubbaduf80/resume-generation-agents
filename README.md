@@ -5,7 +5,7 @@ This project helps tailor resumes and cover letters to specific jobs through fou
 1. **Job Analyst** extracts must-have and nice-to-have resume/cover-letter targets from the job description and company context.
 2. **Application Writer** uses the job targets and your career inventory to draft tailored application materials.
 3. **Hiring Manager Reviewer** reviews the draft adversarially for fit, gaps, risks, and recommended changes.
-4. **Finalization Editor** works with your approved edits, regenerates PDFs, verifies page counts, and promotes drafts to final artifacts.
+4. **Finalization Editor** works with your approved edits, promotes drafts to final Markdown, renders final PDFs, and verifies page counts.
 
 The goal is not to invent fit. The goal is to make real fit legible, identify missing evidence, and avoid over-claiming.
 
@@ -59,6 +59,35 @@ output/
 ```
 
 ## Standard Job Workflow
+
+### Codex Project Setup
+
+For Codex work, open this repository as its own saved/trusted Codex project before running the workflow. New chats should start from this project root, not from a parent `Codex` folder, so Codex can write workflow files without extra approval prompts.
+
+Expected project root:
+
+```text
+C:\Users\bubba\Documents\Codex\2026-05-19\i-want-to-create-a-multi
+```
+
+When a thread is opened from this project, Codex may create and update the workflow-owned files below as part of normal resume generation:
+
+- `data/jobs/{job_slug}/job_description.md`
+- `data/jobs/{job_slug}/company_research.md`
+- `data/jobs/{job_slug}/role_context.md`
+- `output/{job_slug}/01-job-target-brief.md`
+- `output/{job_slug}/02-draft-resume.md`
+- `output/{job_slug}/02-draft-cover-letter.md`
+- `output/{job_slug}/02-evidence-map.md`
+- `output/{job_slug}/03-hiring-manager-review.md`
+- `output/{job_slug}/04-final-resume.md`
+- `output/{job_slug}/04-final-resume.pdf`
+- `output/{job_slug}/04-final-cover-letter.md`
+- `output/{job_slug}/04-final-cover-letter.pdf`
+- `output/{job_slug}/04-final-evidence-map.md`
+- `output/{job_slug}/04-finalization-notes.md`
+
+If Codex repeatedly asks for write approval for these paths, the thread is probably running outside the project root. Start a new chat from the saved resume project or re-open the project in Codex.
 
 If this is a fresh checkout, create your local private career inventory from the committed templates:
 
@@ -116,18 +145,18 @@ Repeat the same pattern with the second, third, and fourth agent specs.
 
 ## Resume PDF Rendering
 
-Agent 02 keeps Markdown as the editable source of truth. Agent 04 renders PDFs during finalization:
+Agent 02 keeps Markdown as the editable source of truth. Agent 04 reads and edits draft Markdown, promotes approved drafts to final Markdown, and renders PDFs only from the final Markdown files:
 
 ```bash
-scripts/render_resume_pdf.js output/company-role-yyyy-mm-dd/02-draft-resume.md output/company-role-yyyy-mm-dd/02-draft-resume.pdf
+scripts/render_resume_pdf.js output/company-role-yyyy-mm-dd/04-final-resume.md output/company-role-yyyy-mm-dd/04-final-resume.pdf
 ```
 
-Agent 04 may render draft PDFs for page-count checks, then renders the final submission PDFs from `04-final-*.md`. The renderer also writes a companion `.html` file for quick visual inspection.
+Agent 04 should not create `02-draft-*.pdf` or draft render HTML files. Page-count checks apply to the final PDFs. The renderer also writes a companion `.html` file for quick visual inspection of final artifacts.
 
 Cover letters use the same renderer with a different stylesheet:
 
 ```bash
-scripts/render_resume_pdf.js output/company-role-yyyy-mm-dd/02-draft-cover-letter.md output/company-role-yyyy-mm-dd/02-draft-cover-letter.pdf styles/cover-letter.css
+scripts/render_resume_pdf.js output/company-role-yyyy-mm-dd/04-final-cover-letter.md output/company-role-yyyy-mm-dd/04-final-cover-letter.pdf styles/cover-letter.css
 ```
 
 ## Operating Principles
