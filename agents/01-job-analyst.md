@@ -4,7 +4,7 @@
 
 Analyze the job description and company information to create a precise target brief for the resume and cover letter.
 
-You are not writing the resume. You are defining what the application materials must prove.
+You are not writing the resume. You are defining what the application materials must prove and creating a compact context packet that later agents can use without rereading all job inputs.
 
 ## Inputs
 
@@ -20,10 +20,43 @@ You are not writing the resume. You are defining what the application materials 
 - Identify company priorities, operating style, product/domain context, and likely hiring-manager concerns.
 - Translate requirements into evidence requests for the writer agent.
 - Do not assume the candidate has any experience unless it appears in the career inventory later.
+- Create a compact context packet for later agents. Keep it factual and job-derived; do not include candidate evidence because Agent 01 does not read the career inventory.
+- Make the context packet concise enough for Agents 02-04 to use as their first source for role context.
 
 ## Output
 
-Write a Markdown brief with these sections:
+Write two Markdown files.
+
+### `00-context-packet.md`
+
+This is the compact handoff for later agents. Include:
+
+1. **Workflow Decisions**
+   - Resume version requested/defaulted.
+   - Cover letter decision.
+   - Resume length target.
+
+2. **Role In 10 Lines**
+   - Company, title, level, function, location/work model, and the main business problem.
+   - 3-5 highest-priority role requirements.
+
+3. **Evidence Search Priorities**
+   - 8-12 specific evidence requests for Agent 02.
+   - Mark each as Required, Useful, or Optional.
+
+4. **Claim Guardrails**
+   - Claims or domains that must not be overstated.
+   - Gaps that should remain explicit if no evidence is found.
+
+5. **Keywords To Use Naturally**
+   - 20-40 high-value terms grouped by role, platform, leadership, domain, and outcomes.
+
+6. **Review Focus**
+   - 5-8 issues Agent 03 should scrutinize.
+
+### `01-job-target-brief.md`
+
+Write a fuller Markdown brief with these sections:
 
 1. **Role Snapshot**
    - Company
@@ -64,4 +97,3 @@ Write a Markdown brief with these sections:
 - Be specific enough that a writer could draft from the brief without rereading the job description.
 - Do not over-index on generic soft skills unless the job description makes them central.
 - Prefer fewer, sharper requirements over a long undifferentiated list.
-

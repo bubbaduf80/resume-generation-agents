@@ -11,17 +11,36 @@ defaults:
     early_career: 1 page
     executive: 2 pages unless the specific job requires broader evidence. Keep personal interests section at the end only if the resume fits within 2 pages.
     expansion_policy: exceed 2 pages only when role-specific evidence is clearly worth the added length
-  cover_letter_length: 250-450 words
+  cover_letter:
+    default: not generated
+    generate_when: explicitly requested in data/jobs/{job_slug}/role_context.md or in the user prompt
+    length_when_requested: 250-450 words
+  resume_versions:
+    default: v2
+    supported:
+      - id: v1
+        description: Current ATS-focused resume format using styles/resume.css
+        resume_css: styles/resume.css
+        draft_resume: 02-draft-resume.md
+        final_resume: 04-final-resume.md
+      - id: v2
+        description: Human-readable resume format with a concise core resume and separate appendix page using styles/resume-v2.css
+        resume_css: styles/resume-v2.css
+        draft_resume: 02-draft-resume-v2.md
+        final_resume: 04-final-resume-v2.md
 
 agent_sequence:
   - id: job_analyst
     prompt: agents/01-job-analyst.md
-    output: 01-job-target-brief.md
+    output:
+      - 00-context-packet.md
+      - 01-job-target-brief.md
   - id: application_writer
     prompt: agents/02-application-writer.md
     output:
-      - 02-draft-resume.md
-      - 02-draft-cover-letter.md
+      - 02-draft-resume-v2.md by default
+      - 02-draft-resume.md when v1 or both is requested
+      - 02-draft-cover-letter.md when a cover letter is explicitly requested
       - 02-evidence-map.md
   - id: hiring_manager_reviewer
     prompt: agents/03-hiring-manager-reviewer.md
@@ -29,10 +48,12 @@ agent_sequence:
   - id: finalization_editor
     prompt: agents/04-finalization-editor.md
     output:
-      - 04-final-resume.md
-      - 04-final-resume.pdf
-      - 04-final-cover-letter.md
-      - 04-final-cover-letter.pdf
+      - 04-final-resume-v2.md by default
+      - 04-final-resume-v2.pdf by default
+      - 04-final-resume.md when v1 or both is requested
+      - 04-final-resume.pdf when v1 or both is requested
+      - 04-final-cover-letter.md when a cover letter was requested and drafted
+      - 04-final-cover-letter.pdf when a cover letter was requested and drafted
       - 04-final-evidence-map.md
       - 04-finalization-notes.md
 
@@ -41,9 +62,14 @@ quality_gates:
   - no fake metrics
   - Only repeat claims from early sections of resume when adding important context in later sections
   - no invented employer names, titles, tools, certifications, or degrees
+  - employment headings use actual titles exactly as documented in data/career_inventory/career_profile.md
+  - parenthetical or functional role descriptions are used only as the first bullet or labeled paragraph when clarification is warranted, never as substitute titles
+  - when patents are mentioned, describe the candidate as a named inventor on a total of 17 patents and do not imply patent ownership or sole invention
   - every priority requirement is addressed or explicitly marked as a gap
+  - candidate contact information in resume Markdown and final resume PDFs, including email, phone, and LinkedIn URL, matches data/career_inventory/career_profile.md
   - reviewer produces actionable revision recommendations
   - final markdown sources match approved candidate edits
   - final PDFs are regenerated from final markdown sources
   - resume page count is verified before finalization
+  - v2 resume structure is checked by scripts/check_v2_resume.js when v2 is generated
   - no spelling errors or grammatical typos. when in doubt, ask.

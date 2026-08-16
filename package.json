@@ -5,6 +5,7 @@
   "type": "commonjs",
   "scripts": {
     "check:currency": "node scripts/check_markdown_currency.js",
+    "check:contact": "node scripts/check_profile_contact.js",
     "render:resume": "node scripts/render_resume_pdf.js"
   },
   "dependencies": {
